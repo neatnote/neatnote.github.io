@@ -1,0 +1,65 @@
+body, div, ul, li, a {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    left:0;
+    right: 0;
+}
+body {
+    
+    display: flex;
+    justify-content: center;
+
+}
+div {
+    display: inline-block;
+    margin:40px 10px 40px 10px;
+    width:600px;
+}
+
+ul li {
+    list-style-type: none;
+}
+ul a {
+    color:#0a5175;
+    text-decoration: none;
+    font-size: 20px;
+}
+ul p {
+    padding-left: 20px;
+    font-size: 18px;
+    color:#222222;
+}
+.open {
+    font-weight:bold;
+}
+
+div.manager {
+    width: 100%;
+    height: 400px;
+    padding: 5px;
+    outline: none;
+    border-left: 2px solid rgb(0, 0, 0);
+    resize: none;
+    overflow: auto;
+    color: rgb(39, 39, 39);
+}
+
+div.manager[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555; 
+}
+span.important {
+    color:#D60000;
+}
+span.question {
+    color:#4400D4;
+}
+span.tag {
+    color:#828282;
+    text-decoration:underline;
+}
+span.done {
+    color:#1D7000 !important;
+    text-decoration:line-through;
+}
+
