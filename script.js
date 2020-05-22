@@ -62,7 +62,8 @@ ready(() => {
 
     document.querySelectorAll("div.manager").forEach(el => {
         var elId = el.getAttribute('id');
-        el.innerHTML = localStorage.getItem(elId).trim();
+        el.innerHTML = localStorage.getItem(elId);
+        el.innerHTML = el.innerHTML.trim();
         el.focus();
         el.addEventListener("input", () => { 
             if (!PROC_EXEC) {

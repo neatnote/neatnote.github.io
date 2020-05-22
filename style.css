@@ -5,37 +5,18 @@ body, div, ul, li, a {
     right: 0;
 }
 body {
-    
     display: flex;
     justify-content: center;
-
+    font-size: 1em;
 }
 div {
     display: inline-block;
-    margin:40px 10px 40px 10px;
+    margin:10px 10px 10px 10px;
     width:600px;
-}
-
-ul li {
-    list-style-type: none;
-}
-ul a {
-    color:#0a5175;
-    text-decoration: none;
-    font-size: 20px;
-}
-ul p {
-    padding-left: 20px;
-    font-size: 18px;
-    color:#222222;
-}
-.open {
-    font-weight:bold;
 }
 
 div.manager {
     width: 100%;
-    height: 400px;
     padding: 5px;
     outline: none;
     border-left: 2px solid rgb(0, 0, 0);
