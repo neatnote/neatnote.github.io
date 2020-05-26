@@ -24,6 +24,7 @@ li.active {
     text-decoration: underline;
 }
 
+
 div.container {
     display: inline-block;
     overflow:hidden;
@@ -47,16 +48,19 @@ div.container-column-33 {
     width:33%;
 }
 
+
 div.manager {
     margin:10px 0px 0px 10px;
     padding: 5px;
     outline: none;
-    border-left: 2px solid rgb(0, 0, 0);
     resize: none;
     overflow: auto;
     color: rgb(39, 39, 39);
+    border-left: 2px solid rgb(0, 0, 0); 
 }
-
+div.blc-red{
+    border-left: 2px solid #D60000 !important;
+}
 div.manager[placeholder]:empty:before {
     content: attr(placeholder);
     color: #555; 

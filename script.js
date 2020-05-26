@@ -50,7 +50,16 @@ function styler(text, typeStyle, command, parentNodeName, pars) {
         }
     }
 }
-
+function updateStyle(el){
+    var style = el.getAttribute('data-style');
+    if (style) {
+        if (el.innerHTML==''){
+            el.classList.remove(style);
+        } else {
+            el.classList.add(style);
+        }
+    }
+}
 ready(() => {
     window.addEventListener("beforeunload", function(e){
         document.querySelectorAll("div.manager").forEach(el => {
@@ -63,6 +72,7 @@ ready(() => {
         var elId = el.getAttribute('id');
         el.innerHTML = localStorage.getItem(elId);
         el.innerHTML = el.innerHTML.trim();
+        updateStyle(el);
         el.focus();
         el.addEventListener("input", () => { 
             if (!PROC_EXEC) {
@@ -74,8 +84,8 @@ ready(() => {
                 styler('?', 'all_line', 'forecolor', 'FONT', '#4400D4');
                 if (el.innerHTML=='<br>') el.innerHTML = '';
                 localStorage.setItem(elId, el.innerHTML);
+                updateStyle(el);
             }
-          
         })
     });
     document.querySelectorAll("li").forEach(el => {
