@@ -17,6 +17,7 @@ function lineCommand(node, content, offset, command, pars)
     PROC_EXEC = true;
     document.execCommand(command, false, pars); 
     PROC_EXEC = false;
+
     if (command!='delete') {
         range.selectNode(node);
         range.setStart(node, offset);
@@ -26,7 +27,7 @@ function lineCommand(node, content, offset, command, pars)
         sel.addRange(range);
     }
 }
-
+/** TODO Need to burn! */
 function styler(text, typeStyle, command, parentNodeName, pars) {
     let sel = window.getSelection();
     let node = sel.focusNode;
@@ -46,7 +47,9 @@ function styler(text, typeStyle, command, parentNodeName, pars) {
             if (command == 'forecolor'){
                 pars = 'rgb(39, 39, 39)';
             }
-            lineCommand(node, content, offset, command, pars);
+            if ((command != 'forecolor')||(command == 'forecolor' && !~content.trim().indexOf('#') && !~content.trim().indexOf('@') && !~content.trim().indexOf('?'))){
+                lineCommand(node, content, offset, command, pars);
+            }
         }
     }
 }
@@ -72,8 +75,8 @@ ready(() => {
         var elId = el.getAttribute('id');
         el.innerHTML = localStorage.getItem(elId);
         el.innerHTML = el.innerHTML.trim();
-        updateStyle(el);
         el.focus();
+        updateStyle(el);
         el.addEventListener("input", () => { 
             if (!PROC_EXEC) {
                 styler('--', 'left_line', 'delete');
@@ -82,6 +85,9 @@ ready(() => {
                 styler('/', 'all_line', 'italic', 'I');
                 styler('!', 'all_line', 'bold', 'B');
                 styler('?', 'all_line', 'forecolor', 'FONT', '#4400D4');
+                styler('@', 'all_line', 'forecolor', 'FONT', '#FF00B8');
+                styler('#', 'all_line', 'forecolor', 'FONT', '#FF8A00');
+                
                 if (el.innerHTML=='<br>') el.innerHTML = '';
                 localStorage.setItem(elId, el.innerHTML);
                 updateStyle(el);
