@@ -52,7 +52,6 @@ function styler(text, typeStyle, command, parentNodeName, pars) {
 }
 
 ready(() => {
-
     window.addEventListener("beforeunload", function(e){
         document.querySelectorAll("div.manager").forEach(el => {
             var elId = el.getAttribute('id');
@@ -77,6 +76,19 @@ ready(() => {
                 localStorage.setItem(elId, el.innerHTML);
             }
           
+        })
+    });
+    document.querySelectorAll("li").forEach(el => {
+        el.addEventListener("click", () => { 
+            var nm = el.childNodes[0].nodeValue;
+            document.querySelectorAll("li").forEach(el => {
+                el.classList.remove("active");
+            }); 
+            el.classList.add("active");
+            document.querySelectorAll("div.desktop").forEach(el => {
+                el.classList.add("hide");
+                document.getElementById("desktop-" + nm).classList.remove("hide");
+            });      
         })
     });
     location.hash ? show(location.hash) : null;
