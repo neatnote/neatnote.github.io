@@ -47,6 +47,10 @@ div.container-column-33 {
     float:left;
     width:33%;
 }
+div.container-column-25 {
+    float:left;
+    width:25%;
+}
 
 
 div.manager {
